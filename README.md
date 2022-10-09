@@ -4,6 +4,17 @@
 
 ![Imagen de Presentacion](https://dharmx.is-a.dev/bspwm-basics/images/featured-image.png)
 
+<h1>
+  <a href="#--------">
+    <img alt="" align="left" src="https://img.shields.io/github/stars/Bleyom/bspwm-basics?color=0b0d10&label=Stars%20%E2%AD%90&style=for-the-badge"/>
+  </a>
+  <a href="#--------">
+    <img alt="" align="right" src="https://img.shields.io/github/forks/Bleyom/bspwm-basics?color=0b0d10&label=Forks%20%F0%9F%94%B1&style=for-the-badge"/>
+  </a>
+</h1>
+
+#
+
 ### Contenido 📖
 
 - [Antes de empezar]()
