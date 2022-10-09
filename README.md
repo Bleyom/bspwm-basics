@@ -36,7 +36,3 @@
 ##### Es un shell script que debe tener comandos que inicien un demon (gestor) del teclado, un demonio (gestor) de notificaciones, configuracion de los montiores, boredes, espacios entre ventanas, y otras como llamadas a `bspc`.
 ##### Tambien puede tener comandos que iniciaran algunas aplicaciones como discord, barras de estado, etc.
 ##### Esto es preferido porque cuando BSPWM es iniciado por primera vez, no tiene ningun estado. Deberas ejecutar algunas llamadas a `bspc` los cuales estableceran un estado, el cual luego podra generar ventanas y otras cosas.
-
-### | Estructura de visualizacion
-
-##### 
