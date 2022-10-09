@@ -59,3 +59,30 @@
 
 ![Monitores](https://dharmx.is-a.dev/bspwm-basics/svgs/bspwm-mon-ws.svg)
 
+> Cómo BSPWM define la relación entre monitores y espacios de trabajo.
+
+### ![#1589F0](https://via.placeholder.com/15/1589F0/1589F0.png) Monitores
+##### Si analizamos el codigo, veremos que los monitores no se representan como un arbol de multiples ramas, sino como una sola rama, es decir, una lista enlazada, donde el monitor actual tiene enlaces al monitor anterior y al siguiente.
+
+> Parte del codigo fuente
+
+ ```diff
+288    typedef struct monitor_t monitor_t;
+289    struct monitor_t {
+290    char name[SMALEN];
+291    uint32_t id;
+292    xcb_randr_output_t randr_id;
+293    xcb_window_t root;
+294    bool wired;
+295    padding_t padding;
+296    unsigned int sticky_count;
+297    int window_gap;
+298    unsigned int border_width;
+299    xcb_rectangle_t rectangle;
+300    desktop_t *desk;
+301    desktop_t *desk_head;
+302    desktop_t *desk_tail;
+@@ 303    monitor_t *prev; @@
+@@ 304    monitor_t *next; @@
+305    };
+```
