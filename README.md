@@ -17,11 +17,11 @@
 
 ### Contenido 📖
 
-- [Antes de empezar]()
-- [Acerca de bspwm]()
-- [Monitores]()
-- [Espacios de Trabajo]()
-- [La estructura de datos BST]()
+- [Antes de empezar](#c5f015-introduccion)
+- [Acerca de bspwm](#1589f0-acerca-de-bspwm)
+- [Monitores](#1589f0-monitores)
+- [Espacios de Trabajo](#1589f0-espacios-de-trabajo)
+- [La estructura de datos BST](#ac45cc--estructura-de-visualizacion)
 - [Modo Automatico]()
 - [Modo Manual]()
 - [Estados, Banderas y diseño]()
