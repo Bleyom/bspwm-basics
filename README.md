@@ -17,14 +17,14 @@
 
 ### Contenido 📖
 
-- [Introduccion](-introduccion)
-- [Antes de empezar](-antes-de-comenzar)
-- [Acerca de bspwm](-acerca-de-bspwm)
-- [Estructura de visualizacion](-estructura-de-visualizacion)
-- [Monitores](-monitores)
-- [Espacios de Trabajo](-espacios-de-trabajo)
-- [Relacion monitor-area de trabajo](--relacion-monitor-area-de-trabajo)
-- [La estructura de datos BST](-estructura-de-datos-bst)
+- [Introduccion](#-introduccion)
+- [Antes de empezar](#-antes-de-comenzar)
+- [Acerca de bspwm](#-acerca-de-bspwm)
+- [Estructura de visualizacion](#-estructura-de-visualizacion)
+- [Monitores](#-monitores)
+- [Espacios de Trabajo](#-espacios-de-trabajo)
+- [Relacion monitor-area de trabajo](#--relacion-monitor-area-de-trabajo)
+- [La estructura de datos BST](#-estructura-de-datos-bst)
 - [Modo Automatico]()
 - [Modo Manual]()
 - [Estados, Banderas y diseño]()
