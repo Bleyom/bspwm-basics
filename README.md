@@ -19,10 +19,10 @@
 - [Herramientas]()
 - [Nota Final]()
 
-### # Introduccion
+### ![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) Introduccion
 #####  BSPWM es un gestor de ventanas con algunas caracteristicas interesantes. En este articulo analizare un poco su codigo fuente, los comandos IPC y algunas otras posibles extensiones. 
 
-### # Antes de comenzar
+### ![#1589F0](https://via.placeholder.com/15/1589F0/1589F0.png) Antes de comenzar
 ##### Este es una articulo bastante intermedio que puede parecel facil de entender y/o seguir al principio, pero se volvera relativamente mas dificl de seguir a medida que el mismo avance. Necesitaras tener las siguientas cosas para progresar sin problemas
 
 - Tal vez una pequeña cantidad de estructura de datos BST.
@@ -30,7 +30,7 @@
 - Experiencia en programacion si es posible
 ##### Todo correcto! Comenzemos.
 
-### # Acerca de bspwm
+### ![#1589F0](https://via.placeholder.com/15/1589F0/1589F0.png) Acerca de bspwm
 ##### BSPWM es un gestor de ventanas de tipo tilling (mosaico), es decir que representa las ventanas como las hojas de un arbol binario **completo**
 ##### A diferencia de la mayoria de los otros administradores de ventas, no tiene un archivo de configuracion decica. Se usa el cliente IPC (bspc) para todo. Ya sea configurar los espacios entre ventanas, color de los borders, los diseños (layouts), monitores, etc. Para BSPWM, un archivo de configuracion el solo un shell script. El cual debe ser almacenado en `$HOME/.config/bspwm/bspwmrc`.
 ##### Es un shell script que debe tener comandos que inicien un demon (gestor) del teclado, un demonio (gestor) de notificaciones, configuracion de los montiores, boredes, espacios entre ventanas, y otras como llamadas a `bspc`.
