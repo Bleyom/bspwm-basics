@@ -47,3 +47,15 @@
 ##### Es un shell script que debe tener comandos que inicien un demon (gestor) del teclado, un demonio (gestor) de notificaciones, configuracion de los montiores, boredes, espacios entre ventanas, y otras como llamadas a `bspc`.
 ##### Tambien puede tener comandos que iniciaran algunas aplicaciones como discord, barras de estado, etc.
 ##### Esto es preferido porque cuando BSPWM es iniciado por primera vez, no tiene ningun estado. Deberas ejecutar algunas llamadas a `bspc` los cuales estableceran un estado, el cual luego podra generar ventanas y otras cosas.
+
+### ![ac45cc](https://via.placeholder.com/15/ac45cc/ac45cc.png) | Estructura de visualizacion
+
+##### Cabe aclara que BSPWM es un administrador de ventanas, lo cual significa que administra ventanas ~~(yeah)~~. Y lo hace representando el arbol de ventanas como hojas de un BST completo.
+##### Para que las aplicaciones puedan engendrarse, BSPWM primero necesita definir una ventana raiz, que en la [jerga](https://es.wikipedia.org/wiki/Jerga) de los WM se denomina espacios de trabjo. Y, despues de definir estos espacios de trabajo, ya podra abrir una ventana, la cual sera administrada por BSPWM.
+
+##### Ademas de esta informacion, debe tenerse en cuenta que BSPWM se diesño originalmente para computadoras con un solo monitor.
+
+##### Si aun estas confundido, la siguiente imagen lo ayudara a entenderlo mejor
+
+![Monitores](https://dharmx.is-a.dev/bspwm-basics/svgs/bspwm-mon-ws.svg)
+
