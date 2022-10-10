@@ -212,3 +212,97 @@ struct node_t {
 ```
 
 ##### Esta solo es una suposicion, pero la razon por la que el autor llama `left_child` y `righ_child`, `first_child` y `second_child`, es por la forma como se generan las ventanas (nodos). Es decir se genera la **primera** ventana que es por nombre, el primogenito del padre actual y el **segundo** hijo es el segundo hijo del padre. Se hace para guiar la intuicion al leer el codigo.
+
+
+### ![#1589F0](https://via.placeholder.com/15/1589F0/1589F0.png) Modo automatico
+
+##### Esto es un poco dificil de explicar. Por lo tanto, debemos andar cuidadosamente para evitar las confusiones.
+
+##### Anteriormente vimos que BSPWM representa monitores y escritorios como una lista doblemente enlazada. Las ventanas se representan como hojas de un arbol binario completo. Abrir una nueva ventana en BSPWM se denomina "insercion", donde la ventana es un nodo que se inserta en un punto del arbol binario como hijo de un padre.
+
+##### Ahora, la insercion tiene dos modos en BSPWM, el automatico y el manual. El modo automatico consta de varios tipos o, mas bien, las formas, los patrones de como se debe "enmarcar" un nodo y/o ventana.
+
+- Esquema alternativo
+- Esquema del lado mas largo
+- Esquema de tipo espiral
+
+##### Puede cambiar el esquema automatico emitiendo una llama a `bspc` tal como la que se muestra a continuacion
+
+```bash
+$ bspc config automatic_scheme # impreme el valor actual
+> alternate
+$ bspc config automatic_scheme longest_side
+$ bspc config automatic_scheme alternate
+$ bspc config automatic_scheme spiral
+```
+
+##### Ahora, en mi opinion comprender el esquema alternativo (predeterminado) seria la forma mas rapida para que un principiante confundido comprenda el funcionamente general de BSPWM. 
+##### Entonces, intentare explicar eso primero.
+
+### ![ac45cc](https://via.placeholder.com/15/ac45cc/ac45cc.png) | Esquema alternativo
+
+##### Explicare esto con un ejemplo en el que se abriran nuevas ventanas paso a paso y en esos pasos se explicara como BSPWM organiza esas ventanas, Estare asignando nuevos alias a estos pasos por cero, inicial, primero, segundo, ...  y ultimo.
+
+### ![ac45cc](https://via.placeholder.com/15/ac45cc/ac45cc.png) | Estado nulo
+
+![null-state](https://dharmx.is-a.dev/bspwm-basics/images/alternate-0.png)
+
+> El estado nulo del esquema alternativo.
+
+##### Bueno, en realidad ese solo es mi fondo de pantalla 😢, De todos modos, este es un estado en el que las ventanas aun no se han generado
+
+
+### ![ac45cc](https://via.placeholder.com/15/ac45cc/ac45cc.png) | Estado Inicial
+
+![initial-state](https://dharmx.is-a.dev/bspwm-basics/svgs/alternate-1.svg)
+
+> El estado inicial del esquema alternativo (diagrama).
+
+![initial](https://dharmx.is-a.dev/bspwm-basics/images/alternate-1.png)
+
+> El estado de escritorio inicial del esquema alternativo.
+
+##### Aqui, acabamos de generar una ventana de terminal. Ahora, el escritorio esta en un estado inicial. Donde una nueva ventana/nodo ha sido insertado.
+
+<details>
+  <summary>📖 ❝❞ Citando el README de BSPWM</summary>
+  Por defecto el punto de inserción es la ventana enfocada y su modo de inserción es automático.
+</details>
+
+### ![ac45cc](https://via.placeholder.com/15/ac45cc/ac45cc.png) | Segundo estado
+
+![segundo-estado](https://dharmx.is-a.dev/bspwm-basics/svgs/alternate-2.svg)
+
+> El segundo diagrama de estado del esquema alternativo (diagrama).
+
+![2-state](https://dharmx.is-a.dev/bspwm-basics/images/alternate-2.png)
+
+> El segundo estado de escritorio del esquema alternativo
+
+```c
+# assert new_node != first_child
+if (is_first_child(new_node))
+  node->second_child = new_node;
+else
+  node->first_child = new_node;
+```
+
+##### El fragmento anterior comprueba si `new_node` que se va a insertar es el primer hijo del nodo padre o no, y si lo es, el atributo del segundo nodo del nodo padre apuntará a `new_node`.
+
+##### Ahora, `first_child` tiene un hermano, es decir `second_child`. Ellos son hermanos. Al usar `bspc` podras verificar si realmente son hermanos o no. Intente ejecutar el siguiente comando. Puede enfocarse en la ventana izquiera o derecha.
+
+##### Para verificarlo primero necesita obtener los IDs de esas dos ventanas. Digamos que la ventana derecha es `0x3000006` y la ventana izquierda `0x2600006`, en mi caso. Puedes ver la imagen de arriba con dos ventanas abiertas como referencia.
+
+##### De todas formas, me centrare en la ventana con ID `0x3000006` (derecha) y ejecutare el siguiente comando. Ahora comprobaremos si al escribir eso se obtiene el ID de la ventana opuesta (izquierda).
+
+```bash
+$ bspc query --nodes --node @brother
+> 0x3000006
+```
+
+##### Como puedes ver, muestra el ID de la ventana de la izquierda. Ademas, cierra la ventana de la izquierda. Ademas cierre la ventana de la izquierda y escriba el mismo comando en la terminal. Vera que `STDERR` se esta dando como respuesta en su lugar, ya que ahora `first_child` se le ha asignado el puntero `NULL`. Ejecute el siguiente comando para verificar.
+
+```bash 
+$ bspc query --nodes --node @brother && echo YES || echo NO
+> NO
+```
