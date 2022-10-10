@@ -159,3 +159,56 @@ $ bspc monitor primary --reset-desktops 1 2 3
 > Breve ilustracion descriptiva de un arbol binario
 
 ##### Tambien puedes notar que los nodos tienen un color direferente. Los colores significan niveles. Por ejemplo, el nivel raiz del nodo esta coloreado con verde ![verde](https://via.placeholder.com/15/79dcaa/79dcaa.png). El siguiente nivel esta coloreado con azul ![azul](https://via.placeholder.com/15/7ab0df/7ab0df.png) y por ultimo el 3er nodo el cual esta colerado con rojo ![rojo](https://via.placeholder.com/15/f87070/f87070.png)
+
+##### Un nodo BST tendria el siguiente aspecto en el lenguaje C.
+```c
+struct node {
+    int some_data;
+    node_t *left_child;
+    node_t *right-child;
+};
+```
+
+##### Este nodo contiene un puntero al hijo izquiero y otro al hijo derech. Los hijos izquierdo y derecho son hermanos, como se ilustra en el diagram. Y `some_data` cuales son los datos que transportara el nodo. Ahora, considere el siguiente codigo para obtener una vista mas clara de como se incializa el nodo y como funcionan algunos componentes basicos.
+
+<details>
+  <summary>Implementacion minimalista de BST en el lenguaje C</summary>
+  
+  ```c
+  typedef struct node_t node_t;
+struct node_t {
+    int data;
+    node_t* left;
+    node_t* right;
+};
+  ```
+</details>
+  </summary>
+</details>
+
+###### Nota ✏️
+> No intente entender la funcion de cada variable. Simplemente tome nota de las similitudes entre las dos definiciones de nodo.
+
+```c
+typedef struct node_t node_t;
+struct node_t {
+    uint32_t id;
+    split_type_t split_type;
+    double split_ratio;
+    presel_t *presel;
+    xcb_rectangle_t rectangle;
+    constraints_t constraints;
+    bool vacant;
+    bool hidden;
+    bool sticky;
+    bool private;
+    bool locked;
+    bool marked;
+    node_t *first_child;
+    node_t *second_child;
+    node_t *parent;
+    client_t *client;
+};
+```
+
+##### Esta solo es una suposicion, pero la razon por la que el autor llama `left_child` y `righ_child`, `first_child` y `second_child`, es por la forma como se generan las ventanas (nodos). Es decir se genera la **primera** ventana que es por nombre, el primogenito del padre actual y el **segundo** hijo es el segundo hijo del padre. Se hace para guiar la intuicion al leer el codigo.
