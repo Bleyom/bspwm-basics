@@ -306,3 +306,15 @@ $ bspc query --nodes --node @brother
 $ bspc query --nodes --node @brother && echo YES || echo NO
 > NO
 ```
+
+### ![ac45cc](https://via.placeholder.com/15/ac45cc/ac45cc.png) | Tercer Estado
+![tercer-estado](https://dharmx.is-a.dev/bspwm-basics/svgs/alternate-3.svg)
+ 
+>  El tercer estado de escritorio del esquema alternativo
+
+![](https://dharmx.is-a.dev/bspwm-basics/images/alternate-3.png)
+
+##### Este es probablemente un buen momento para mencionar lo que significan los nodos `A` y `B` Actualmente, el nodo `A` es el padre del nodo `B` y `1` y el nodo `B` es el padre del nodo `2` y `3`.
+
+##### Se llaman nodos padre o, como lo define BSPWM, nodos internos, solo aparecerán cuando a `second_child` esté a punto de nacer, así que, por ejemplo, volviendo al segundo estado , debemos entender que el padre Ano aparecerá hasta que esté tiempo para 2 que nazca un segundo hijo . Entonces, en este caso, antes de que nazca el segundo hijo, el primer hijo se desplaza a la izquierda de un nuevo nodo y el segundo hijo se adjunta a la derecha de ese nuevo nodo. El nodo ahora se convierte en el padre de esos dos nodos. Además, tenga en cuenta que los nodos internos no son visibles. Cuando un nodo se divide en dos, se crea un nodo interno y permanece debajo de `first_child` y `second_child`.
+ 
